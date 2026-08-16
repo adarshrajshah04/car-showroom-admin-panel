@@ -51,7 +51,11 @@ export default function BrandDataTable({ brands, setUpdate }) {
               <Link to={`/brands/${id}`}>
                 <GridActionsCellItem icon={VisibilityIcon} />
               </Link>
+
+              <Link to={`/brands/update/${id}`}>
               <GridActionsCellItem icon={EditIcon} />
+              </Link>
+
               <GridActionsCellItem
                 icon={DeleteIcon}
                 onClick={() => {

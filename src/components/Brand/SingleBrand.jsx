@@ -5,11 +5,12 @@ import { useParams } from 'react-router-dom'
 
 const SingleBrand = () => {
     const {id}=useParams()
+    console.log("ID =", id);
     const [brand, setbrand] = useState({})
     useEffect(() => {
         axios.get(`https://6a79ba5f674f43f4db11a88d.mockapi.io/category/${id}`)
         .then(res=>{
-            console.log(res.data);
+            // console.log(res.data);
             
             setbrand(res.data)
 

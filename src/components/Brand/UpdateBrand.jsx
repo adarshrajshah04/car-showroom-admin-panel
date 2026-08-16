@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
@@ -21,18 +22,36 @@ const validationSchema = Yup.object({
     .min(10, "Description must be at least 10 characters")
     .max(300, "Description must not exceed 300 characters"),
 });
-const CreateBrands = () => {
+
+const UpdateBrand = () => {
   const [msgerror, setmsgError] = useState("");
+  const { id } = useParams();
+  const [data, setdata] = useState({})
+
+
+    useEffect(() => {
+      axios.get(`https://6a79ba5f674f43f4db11a88d.mockapi.io/category/${id}`)
+      .then(res=>{
+        setdata(res.data)
+        
+        
+       
+        
+      })
+    }, [id])
+
+//   const {name,description,logo}=data;
   return (
-    <div className="w-full h-[80vh] bg-gray-700">
+    <div className="w-full h-[90vh]">
       <Formik
-        initialValues={{ name: "", logo: "",description:"" }}
+     enableReinitialize
+        initialValues={{ name:data.name , logo:data.logo , description:data.description  }}
         validationSchema={validationSchema}
         onSubmit={(values, { setSubmitting, resetForm }) => {
           setTimeout(() => {
             axios
-              .post(
-                "https://6a79ba5f674f43f4db11a88d.mockapi.io/category",
+              .put(
+                `https://6a79ba5f674f43f4db11a88d.mockapi.io/category/${id}`,
                 values,
               )
               .then(() => {
@@ -144,11 +163,15 @@ const CreateBrands = () => {
                 disabled={isSubmitting}
                 className="block   justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-md/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:bg-indigo-500 dark:shadow-none dark:hover:bg-indigo-400 dark:focus-visible:outline-indigo-500"
               >
-                Submit
+                Update
               </button>
             </div>
 
-            {msgerror && <p className="text-center text-sm text-red-600 font-bold ">{msgerror}</p>}
+            {msgerror && (
+              <p className="text-center text-sm text-red-600 font-bold ">
+                {msgerror}
+              </p>
+            )}
           </form>
         )}
       </Formik>
@@ -156,4 +179,4 @@ const CreateBrands = () => {
   );
 };
 
-export default CreateBrands;
+export default UpdateBrand;
