@@ -12,7 +12,7 @@ export const ShowBrands = () => {
     axios
       .get("https://6a79ba5f674f43f4db11a88d.mockapi.io/category")
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
 
         setbrands(res.data);
       })

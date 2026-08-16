@@ -25,9 +25,9 @@ export default function BrandDataTable({ brands, setUpdate }) {
         // console.log(logo)
 
         return (
-          <>
-            <img src={logo} width={50} height={50} className="rounded-full" />
-          </>
+          <div className="w-12 h-12 flex items-center justify-center object-center ">
+            <img  src={logo} width={50} height={50} className="w-full h-full rounded-full object-cover" />
+          </div>
         );
       },
     },
@@ -48,7 +48,7 @@ export default function BrandDataTable({ brands, setUpdate }) {
         return (
           <>
             <div>
-              <Link to={`/category/${id}`}>
+              <Link to={`/brands/${id}`}>
                 <GridActionsCellItem icon={VisibilityIcon} />
               </Link>
               <GridActionsCellItem icon={EditIcon} />
