@@ -19,12 +19,13 @@ const MySidebar = ({ collapsed }) => {
             component={<Link to={'/brands'}/>}> All-Brands</MenuItem>
           
 
-          <MenuItem icon={<FaPlus />}> Add-brands</MenuItem>
+          <MenuItem icon={<FaPlus />}
+          component={<Link to='/create-brand'/>}> Add-brands</MenuItem>
         </SubMenu>
 
         <SubMenu label="Cars" icon={<IoCarSport />}>
-          <MenuItem icon={<BiSolidCategory />}> All-Brands</MenuItem>
-          <MenuItem icon={<FaPlus />}> Add-brands</MenuItem>
+          <MenuItem icon={<BiSolidCategory />}> All-Cars</MenuItem>
+          <MenuItem icon={<FaPlus />}> Add-Cars</MenuItem>
         </SubMenu>
       </Menu>
     </Sidebar>

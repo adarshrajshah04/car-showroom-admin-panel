@@ -20,14 +20,14 @@ const SingleBrand = () => {
     
   return (
     <div className='h-full w-full flex flex-col items-center'>
-       <div className='w-[40%]  h-[60vh] rounded-3xl overflow-hidden'>
+       <div className='w-[40%]  h-[80vh] rounded-3xl overflow-hidden'>
         <img src={brand.logo} alt="logo" 
         className='w-full h-full object-cover' />
 
        </div>
        <div className='h-[80%] w-[80%] flex flex-col items-start'>
-        <h3 className='text-3xl font-bold mt-5  '>{brand.name}</h3>
-        <p className='mt-2 text-gray-600 font-medium '>{brand.description}</p>
+        <h3 className='text-3xl font-bold mt-5 text-white '>{brand.name}</h3>
+        <p className='mt-2 text-white font-medium '>{brand.description}</p>
        </div>
     </div>
   )

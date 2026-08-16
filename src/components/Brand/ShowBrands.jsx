@@ -27,10 +27,10 @@ export const ShowBrands = () => {
 
   return (
     <div className="w-full s-full" >
-      <h3 className="text-3xl font-medium">All-Brands</h3>
-      <p>View,Edit,Update Brands</p>
+      <h3 className="text-3xl font-medium text-white">All-Brands</h3>
+      <p className="text-white">View,Edit,Update Brands</p>
 
-      <div className="w-full h-screen mt-5">
+      <div className="w-full h-[80vh] mt-5">
         {loading ?<><p className="flex items-center justify-center">Loading.....</p></>:<></>}
 
         {/* // data sending to BrandDataTable */}
@@ -38,7 +38,7 @@ export const ShowBrands = () => {
         {brands.length==0 && <p className="text-2xl">No data found</p> }
 
 
-        <h3 className=" text-3xl text-red-900 text-center font-bold ">{error}</h3>
+        <h3 className=" text-3xl text-red-600 text-center font-bold ">{error}</h3>
       </div>
     </div>
   );

@@ -12,7 +12,7 @@ const Layout = () => {
         <MyNavbar setCollapsed={setCollapsed} collapsed={collapsed} />
         <div className='flex'>
             <MySidebar collapsed={collapsed}/>
-            <div className='w-full h-full px-10 py-5'>
+            <div className='w-full h-full px-10 py-5  bg-gray-700'>
                 <Outlet/>
             </div>
         </div>

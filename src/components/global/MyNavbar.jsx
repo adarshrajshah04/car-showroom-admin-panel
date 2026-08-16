@@ -6,7 +6,7 @@ import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 
 export default function MyNavbar({ collapsed, setCollapsed }) {
   return (
-    <header className="bg-white dark:bg-gray-900">
+    <header className=" bg-white dark:bg-gray-900">
       <nav
         aria-label="Global"
         className="flex items-center justify-between p-6 lg:px-8"
