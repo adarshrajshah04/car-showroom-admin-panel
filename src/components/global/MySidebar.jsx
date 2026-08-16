@@ -1,45 +1,34 @@
-import React from 'react'
-import { Sidebar, Menu, MenuItem,SubMenu } from "react-pro-sidebar";
+import React from "react";
+import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 import { FaTags } from "react-icons/fa";
 import { BiSolidCategory } from "react-icons/bi";
 import { FaPlus } from "react-icons/fa";
 import { IoCarSport } from "react-icons/io5";
 import { ImHome } from "react-icons/im";
+import { Link } from "react-router-dom";
 
-
-const MySidebar = ({collapsed}) => {
+const MySidebar = ({ collapsed }) => {
   return (
     <Sidebar collapsed={collapsed}>
-        <Menu>
-          <MenuItem
-          icon={<ImHome />}> Dashboard</MenuItem>
+      <Menu>
+        <MenuItem icon={<ImHome />}> Dashboard</MenuItem>
 
-          <SubMenu
-          label='Brands'
-          icon={<FaTags />}>
-            <MenuItem
-            icon={<BiSolidCategory />}> All-Brands</MenuItem>
-            <MenuItem
-            icon={<FaPlus />}> Add-brands</MenuItem>
-          </SubMenu>
-
-          <SubMenu
-          label='Cars'
-          icon={<IoCarSport />
-}>
-            <MenuItem
-            icon={<BiSolidCategory />}> All-Brands</MenuItem>
-            <MenuItem
-            icon={<FaPlus />}> Add-brands</MenuItem>
-          </SubMenu>
+        <SubMenu label="Brands" icon={<FaTags />}>
           
-        </Menu>
-      </Sidebar>
-    
-       
-      
-   
-  )
-}
+            <MenuItem icon={<BiSolidCategory />}
+            component={<Link to={'/brands'}/>}> All-Brands</MenuItem>
+          
 
-export default MySidebar
+          <MenuItem icon={<FaPlus />}> Add-brands</MenuItem>
+        </SubMenu>
+
+        <SubMenu label="Cars" icon={<IoCarSport />}>
+          <MenuItem icon={<BiSolidCategory />}> All-Brands</MenuItem>
+          <MenuItem icon={<FaPlus />}> Add-brands</MenuItem>
+        </SubMenu>
+      </Menu>
+    </Sidebar>
+  );
+};
+
+export default MySidebar;
