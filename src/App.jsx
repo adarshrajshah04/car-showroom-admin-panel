@@ -6,6 +6,7 @@ import SingleBrand from './components/Brand/SingleBrand'
 import CreateBrands from './components/Brand/CreateBrands'
 import UpdateBrand from './components/Brand/UpdateBrand'
 import Home from './components/Home'
+import CreateModel from './components/model/CreateModel'
 
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
         <Route path='/' element={<Home/>} />
         <Route path='/brands' element={<ShowBrands/>} />
         <Route path='/create-brand' element={<CreateBrands/>} />
+        <Route path='/create-model' element={<CreateModel/>} />
         {/* Dynamic routing */}
         <Route path='/brands/:id' element={<SingleBrand/>} />
         <Route path='/brands/update/:id' element={<UpdateBrand/>} />

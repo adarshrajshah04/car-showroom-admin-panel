@@ -47,7 +47,7 @@ export default function BrandDataTable({ brands, setUpdate }) {
       renderCell: ({ row: { id, name } }) => {
         return (
           <>
-            <div>
+            <div >
               <Link to={`/brands/${id}`}>
                 <GridActionsCellItem icon={VisibilityIcon} />
               </Link>

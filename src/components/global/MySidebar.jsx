@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 const MySidebar = ({ collapsed }) => {
   return (
-    <Sidebar collapsed={collapsed}>
+    <Sidebar className="shrink-0"  collapsed={collapsed}>
       <Menu>
         <MenuItem icon={<ImHome />}> Dashboard</MenuItem>
 
@@ -25,7 +25,8 @@ const MySidebar = ({ collapsed }) => {
 
         <SubMenu label="Cars" icon={<IoCarSport />}>
           <MenuItem icon={<BiSolidCategory />}> All-Cars</MenuItem>
-          <MenuItem icon={<FaPlus />}> Add-Cars</MenuItem>
+          <MenuItem icon={<FaPlus />}
+          component={<Link to={'/create-model'} />}> Add-Cars</MenuItem>
         </SubMenu>
       </Menu>
     </Sidebar>
