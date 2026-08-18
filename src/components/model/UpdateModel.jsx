@@ -1,3 +1,4 @@
+import { useParams } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
@@ -49,11 +50,11 @@ const validationSchema = Yup.object({
     .max(5, "Rating cannot be greater than 5"),
 });
 
-const CreateModel = () => {
-  const [cate, setCate] = useState([]);
-
+const UpdateModel = () => {
   const [submitError, setSubmitError] = useState("");
-  
+  const { id } = useParams();
+  const [data, setdata] = useState({});
+  const [cate, setCate] = useState([]);
 
   useEffect(() => {
     axios
@@ -66,30 +67,41 @@ const CreateModel = () => {
       });
   }, []);
 
+  useEffect(() => {
+    axios
+      .get(
+        `https://6a79ba5f674f43f4db11a88d.mockapi.io/category/2/product/${id}`,
+      )
+      .then((res) => {
+        setdata(res.data);
+      });
+  }, [id]);
+
+  //   const {name,description,logo}=data;
   return (
-    <div>
-      <h3 className="text-4xl mb-6 font-bold text-white ">Add Models</h3>
+    <div className="w-full h-[90vh]">
       <Formik
+        enableReinitialize
         initialValues={{
-          title: "",
-          description: "",
-          thumbnail: "",
-          material: "",
-          price: "",
-          discountPercentage: "",
-          category: "",
-          quantitySold: "",
-          totalRevenue: "",
-          tags: "",
-          rating: "",
+          title: data.title,
+          description: data.description,
+          thumbnail: data.thumbnail,
+          material: data.material,
+          price: data.price,
+          discountPercentage: data.discountPercentage,
+          category: '',
+          quantitySold: data.quantitySold,
+          totalRevenue: data.totalRevenue,
+          tags: data.tags,
+          rating: data.rating,
         }}
         validationSchema={validationSchema}
         onSubmit={(values, { setSubmitting, resetForm }) => {
           let categoryid = values.category;
           setTimeout(() => {
             axios
-              .post(
-                `https://6a79ba5f674f43f4db11a88d.mockapi.io/category/${categoryid}/product`,
+              .put(
+                `https://6a79ba5f674f43f4db11a88d.mockapi.io/category/${categoryid}/product/${id}`,
                 values,
               )
               .then(() => {
@@ -357,4 +369,4 @@ const CreateModel = () => {
   );
 };
 
-export default CreateModel;
+export default UpdateModel;

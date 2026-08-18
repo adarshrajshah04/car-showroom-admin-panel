@@ -24,7 +24,8 @@ const MySidebar = ({ collapsed }) => {
         </SubMenu>
 
         <SubMenu label="Cars" icon={<IoCarSport />}>
-          <MenuItem icon={<BiSolidCategory />}> All-Cars</MenuItem>
+          <MenuItem icon={<BiSolidCategory />}
+          component={<Link to={'/model'}/>}> All-Cars</MenuItem>
           <MenuItem icon={<FaPlus />}
           component={<Link to={'/create-model'} />}> Add-Cars</MenuItem>
         </SubMenu>
