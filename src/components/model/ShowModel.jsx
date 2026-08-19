@@ -2,8 +2,13 @@
 import React, { useEffect, useState } from 'react'
 import ModelDataTable from './ModelDataTable'
 import axios from 'axios'
+import { useParams } from 'react-router-dom'
+
 
 const ShowModel = () => {
+   const { categoryId } = useParams();
+   console.log(categoryId);
+   
     const [model, setModel] = useState([])
     const [update, setUpdate] = useState(1)
     useEffect(() => {
@@ -22,8 +27,8 @@ const ShowModel = () => {
 
   return (
     <div>
-        <h3>Models</h3>
-        <p>View , Update and Delete Models </p>
+        <h3 className='text-2xl text-white font-bold '>Models</h3>
+        <p className='text-white font-medium'>View , Update and Delete Models </p>
 
         <div>
             <ModelDataTable model={model} setUpdate={setUpdate} />

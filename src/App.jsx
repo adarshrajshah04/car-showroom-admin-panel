@@ -10,12 +10,17 @@ import CreateModel from './components/model/CreateModel'
 import ShowModel from './components/model/ShowModel'
 import SingleModel from './components/model/SingleModel'
 import UpdateModel from './components/model/UpdateModel'
+import NotFound from './components/NotFound'
+import Login from './Login'
 
 
 const App = () => {
   return (
     <div>
+
       <Routes>
+        <Route path='/login' element={<Login/>} />
+        
         <Route path='/' element={<Layout/>}>
         <Route index element={<Home/>} />
         <Route path='/' element={<Home/>} />
@@ -23,6 +28,7 @@ const App = () => {
         <Route path='/create-brand' element={<CreateBrands/>} />
         <Route path='/create-model' element={<CreateModel/>} />
         <Route path='/model' element={<ShowModel/>} />
+        <Route path='*' element={<NotFound/>} />
         {/* Dynamic routing */}
         {/* brands */}
         <Route path='/brands/:id' element={<SingleBrand/>} />
@@ -30,6 +36,7 @@ const App = () => {
         {/* models */}
         <Route path='/model/:id' element={<SingleModel/>} />
         <Route path='/model/update/:id' element={<UpdateModel/>} />
+        
         
         </Route>
       </Routes>

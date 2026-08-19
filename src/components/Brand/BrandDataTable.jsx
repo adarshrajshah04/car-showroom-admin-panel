@@ -9,7 +9,7 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import { DataGrid, GridActionsCellItem } from "@mui/x-data-grid";
 import { Link } from "react-router-dom";
 import axios from "axios";
-``
+
 export default function BrandDataTable({ brands, setUpdate }) {
   // const navigate = useNavigate()
 
