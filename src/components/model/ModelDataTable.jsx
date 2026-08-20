@@ -9,13 +9,19 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import { DataGrid, GridActionsCellItem } from "@mui/x-data-grid";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useContext } from "react";
+import BellContext from "../BellContext";
+
 
 export default function ModelDataTable({ model, setUpdate }) {
+  const data = useContext(BellContext);
+  const { setBellarr } = data;
+
   // const navigate = useNavigate()
 
   const columns = [
     { field: "id", headerName: "Id" },
-    { field: "name", headerName: "Name" },
+    { field: "title", headerName: "Name" },
     {
       field: "image",
       headerName: "Image",
@@ -26,7 +32,12 @@ export default function ModelDataTable({ model, setUpdate }) {
 
         return (
           <div className="w-12 h-12 flex items-center justify-center object-center ">
-            <img  src={thumbnail} width={50} height={50} className="w-full h-full rounded-full object-cover" />
+            <img
+              src={thumbnail}
+              width={50}
+              height={50}
+              className="w-full h-full rounded-full object-cover"
+            />
           </div>
         );
       },
@@ -47,13 +58,13 @@ export default function ModelDataTable({ model, setUpdate }) {
       renderCell: ({ row: { id, title } }) => {
         return (
           <>
-            <div >
+            <div>
               <Link to={`/model/${id}`}>
                 <GridActionsCellItem icon={VisibilityIcon} />
               </Link>
 
               <Link to={`/model/update/${id}`}>
-              <GridActionsCellItem icon={EditIcon} />
+                <GridActionsCellItem icon={EditIcon} />
               </Link>
 
               <GridActionsCellItem
@@ -67,9 +78,17 @@ export default function ModelDataTable({ model, setUpdate }) {
                       .delete(
                         `https://6a79ba5f674f43f4db11a88d.mockapi.io/category/2/product/${id}`,
                       )
-                      .then((response) => {
-                        console.log(response);
-                        setUpdate( u => u+1)
+                      .then(() => {
+                        // console.log(response);
+                        setUpdate((u) => u + 1);
+                        // Bell me data added
+                        setBellarr((prev) => [
+                          ...prev,
+                          {
+                           type:'Delete',
+                            message: `${title} Was deleted`,
+                          },
+                        ]);
                       })
                       .catch((e) => {
                         console.error(e);

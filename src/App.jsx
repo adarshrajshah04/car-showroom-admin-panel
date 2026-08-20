@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Layout from "./components/global/Layout";
 import { Route, Routes } from "react-router-dom";
 import { ShowBrands } from "./components/Brand/ShowBrands";
@@ -13,35 +13,47 @@ import UpdateModel from "./components/model/UpdateModel";
 import NotFound from "./components/NotFound";
 import Login from "./components/Login";
 import { Private } from "./components/Private";
+import BellContext from "./components/BellContext";
+
 
 const App = () => {
+  const [bellarr, setBellarr] = useState([]);
+  const data = {
+    bellarr,
+    setBellarr,
+  };
+
+
+
   return (
-    <div>
-      <Routes>
-        <Route path="/login" element={<Login />} />
+    // <div>
+      <BellContext.Provider value={data}>
+        <Routes>
+          {/* <Route path="/login" element={<Login />} /> */}
 
-        <Route path="/" element={<Private/>}>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/brands" element={<ShowBrands />} />
-            <Route path="/create-brand" element={<CreateBrands />} />
-            <Route path="/create-model" element={<CreateModel />} />
-            <Route path="/model" element={<ShowModel />} />
-            {/* Dynamic routing */}
-            {/* brands */}
-            <Route path="/brands/:id" element={<SingleBrand />} />
-            <Route path="/brands/update/:id" element={<UpdateBrand />} />
-            {/* models */}
-            <Route path="/model/:id" element={<SingleModel />} />
-            <Route path="/model/update/:id" element={<UpdateModel />} />
+          <Route path="/" element={<Private />}>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Home />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/brands" element={<ShowBrands />} />
+              <Route path="/create-brand" element={<CreateBrands />} />
+              <Route path="/create-model" element={<CreateModel />} />
+              <Route path="/model" element={<ShowModel />} />
+              {/* Dynamic routing */}
+              {/* brands */}
+              <Route path="/brands/:id" element={<SingleBrand />} />
+              <Route path="/brands/update/:id" element={<UpdateBrand />} />
+              {/* models */}
+              <Route path="/model/:id" element={<SingleModel />} />
+              <Route path="/model/update/:id" element={<UpdateModel />} />
+            </Route>
           </Route>
-        </Route>
-        <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<Login />} />
 
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </div>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BellContext.Provider>
+    // </div>
   );
 };
 

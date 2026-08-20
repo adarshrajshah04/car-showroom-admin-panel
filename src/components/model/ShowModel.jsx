@@ -2,12 +2,12 @@
 import React, { useEffect, useState } from 'react'
 import ModelDataTable from './ModelDataTable'
 import axios from 'axios'
-import { useParams } from 'react-router-dom'
+// import { useParams } from 'react-router-dom'
 
 
 const ShowModel = () => {
-   const { categoryId } = useParams();
-   console.log(categoryId);
+  //  const { categoryId } = useParams();
+  //  console.log(categoryId);
    
     const [model, setModel] = useState([])
     const [update, setUpdate] = useState(1)
