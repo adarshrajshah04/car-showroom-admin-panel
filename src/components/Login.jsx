@@ -35,7 +35,8 @@ export default function Login() {
                   sessionStorage.setItem('Token',res.data.accessToken)
                   alert('Login Successful')
                   resetForm()
-                  home('/')
+                  
+                  home('/home')
                 })
                 .catch(()=>{
                     console.log('something is wrong');

@@ -11,7 +11,8 @@ const MySidebar = ({ collapsed }) => {
   return (
     <Sidebar className="shrink-0"  collapsed={collapsed}>
       <Menu>
-        <MenuItem icon={<ImHome />}> Dashboard</MenuItem>
+        <MenuItem icon={<ImHome />} 
+        component={<Link to={'/home'}/>}> Dashboard</MenuItem>
 
         <SubMenu label="Brands" icon={<FaTags />}>
           
