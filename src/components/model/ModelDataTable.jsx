@@ -12,7 +12,6 @@ import axios from "axios";
 import { useContext } from "react";
 import BellContext from "../BellContext";
 
-
 export default function ModelDataTable({ model, setUpdate }) {
   const data = useContext(BellContext);
   const { setBellarr } = data;
@@ -55,7 +54,7 @@ export default function ModelDataTable({ model, setUpdate }) {
       headerName: "Actions",
       width: 100,
       cellClassName: "actions",
-      renderCell: ({ row: { id, title } }) => {
+      renderCell: ({ row: { id, title, categoryId } }) => {
         return (
           <>
             <div>
@@ -63,7 +62,7 @@ export default function ModelDataTable({ model, setUpdate }) {
                 <GridActionsCellItem icon={VisibilityIcon} />
               </Link>
 
-              <Link to={`/model/update/${id}`}>
+              <Link to={`/model/update/${categoryId}-${id}`}>
                 <GridActionsCellItem icon={EditIcon} />
               </Link>
 
@@ -85,7 +84,8 @@ export default function ModelDataTable({ model, setUpdate }) {
                         setBellarr((prev) => [
                           ...prev,
                           {
-                           type:'Delete',
+                            id: Date.now(),
+                            type: "Delete Model",
                             message: `${title} Was deleted`,
                           },
                         ]);

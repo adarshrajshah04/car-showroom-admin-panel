@@ -1,8 +1,9 @@
-import { useParams } from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
+import BellContext from "../BellContext";
 
 const validationSchema = Yup.object({
   title: Yup.string()
@@ -32,7 +33,7 @@ const validationSchema = Yup.object({
     .required("Discount percentage is required")
     .min(0, "Discount cannot be less than 0%")
     .max(50, "Discount cannot exceed 100%"),
-  category: Yup.string().trim().required("Category is required"),
+  categoryId: Yup.string().trim().required("Category is required"),
   quantitySold: Yup.number()
     .typeError("Quantity sold must be a number")
     .required("Quantity sold is required")
@@ -51,10 +52,14 @@ const validationSchema = Yup.object({
 });
 
 const UpdateModel = () => {
+  const modeltable = useNavigate();
   const [submitError, setSubmitError] = useState("");
   const { id } = useParams();
   const [data, setdata] = useState({});
   const [cate, setCate] = useState([]);
+
+  const ndata = useContext(BellContext);
+  const { setBellarr } = ndata;
 
   useEffect(() => {
     axios
@@ -70,7 +75,7 @@ const UpdateModel = () => {
   useEffect(() => {
     axios
       .get(
-        `https://6a79ba5f674f43f4db11a88d.mockapi.io/category/2/product/${id}`,
+        `https://6a79ba5f674f43f4db11a88d.mockapi.io/category/${id.split("-")[0]}/product/${id.split("-")[1]}`,
       )
       .then((res) => {
         setdata(res.data);
@@ -89,7 +94,7 @@ const UpdateModel = () => {
           material: data.material,
           price: data.price,
           discountPercentage: data.discountPercentage,
-          category: '',
+          categoryId: data.categoryId || "",
           quantitySold: data.quantitySold,
           totalRevenue: data.totalRevenue,
           tags: data.tags,
@@ -97,16 +102,27 @@ const UpdateModel = () => {
         }}
         validationSchema={validationSchema}
         onSubmit={(values, { setSubmitting, resetForm }) => {
-          let categoryid = values.category;
+          // let categoryid = values.category;
+          let title = values.title;
           setTimeout(() => {
             axios
               .put(
-                `https://6a79ba5f674f43f4db11a88d.mockapi.io/category/${categoryid}/product/${id}`,
+                // `https://6a79ba5f674f43f4db11a88d.mockapi.io/category/${categoryid}/product/${id}`,
+                `https://6a79ba5f674f43f4db11a88d.mockapi.io/category/${id.split("-")[0]}/product/${id.split("-")[1]}`,
                 values,
               )
               .then(() => {
                 resetForm();
-                alert("Model Added successfully");
+                alert("Model Update successfully");
+                modeltable("/model");
+                setBellarr((prev) => [
+                  ...prev,
+                  {
+                    id: Date.now(),
+                    type: "Update Model",
+                    message: `${title} Was Updated`,
+                  },
+                ]);
               })
               .catch((err) => {
                 setSubmitError(err);
@@ -245,13 +261,13 @@ const UpdateModel = () => {
                 <legend className="px-2 text-gray-400 text-xs">category</legend>
 
                 <select
-                  name="category"
+                  name="categoryId"
                   className=" w-full px-6 py-3 border  border-gray-400 text-white hover:border-gray-100 rounded "
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={values.category}
+                  value={values.categoryId}
                 >
-                  <option value="" selected disabled>
+                  <option value=""  disabled>
                     Select category
                   </option>
                   {cate.map(({ id, name }) => {
@@ -264,7 +280,7 @@ const UpdateModel = () => {
                 </select>
                 <p className="text-sm text-red-500 mt-1 ml-2">
                   {" "}
-                  {errors.category && touched.category && errors.category}
+                  {errors.categoryId && touched.categoryId && errors.categoryId}
                 </p>
               </fieldset>
               <fieldset className="flex w-[68%] justify-between border p-2 border-green-400/50 mb-5">
