@@ -8,7 +8,7 @@ const SingleModel = () => {
     console.log("ID =", id);
     const [smodel, setSmodel] = useState({})
     useEffect(() => {
-        axios.get(`https://6a79ba5f674f43f4db11a88d.mockapi.io/category/2/product/${id}`)
+        axios.get(`https://6a79ba5f674f43f4db11a88d.mockapi.io/category/${id.split("-")[0]}/product/${id.split("-")[1]}`)
         .then(res=>{
             // console.log(res.data);
             

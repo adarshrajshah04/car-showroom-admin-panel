@@ -31,11 +31,11 @@ export const ShowBrands = () => {
       <p className="text-white">View,Edit,Update Brands</p>
 
       <div className="w-full h-[80vh] mt-5">
-        {loading ?<><p className="flex items-center justify-center">Loading.....</p></>:<></>}
+        {loading ?<><p className="flex items-center justify-center text-white absolute top-[50%] left-[50%] ">Loading.....</p></>:<></>}
 
         {/* // data sending to BrandDataTable */}
         {brands.length>0 && <BrandDataTable brands={brands} setUpdate={setupdate} />}   
-        {brands.length==0 && <p className="text-2xl">No data found</p> }
+        {brands.length==0 && <p className="text-2xl text-white">No data found</p> }
 
 
         <h3 className=" text-3xl text-red-600 text-center font-bold ">{error}</h3>

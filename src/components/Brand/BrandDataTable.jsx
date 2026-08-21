@@ -1,17 +1,22 @@
-import * as React from "react";
+import  React, { useContext } from "react";
 import Box from "@mui/material/Box";
 import AddIcon from "@mui/icons-material/Add";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/DeleteOutlined";
-import SaveIcon from "@mui/icons-material/Save";
-import CancelIcon from "@mui/icons-material/Close";
+// import SaveIcon from "@mui/icons-material/Save";
+// import CancelIcon from "@mui/icons-material/Close";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { DataGrid, GridActionsCellItem } from "@mui/x-data-grid";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import BellContext from "../BellContext";
+
 
 export default function BrandDataTable({ brands, setUpdate }) {
   // const navigate = useNavigate()
+
+  const data = useContext(BellContext)
+  const {setBellarr} = data
 
   const columns = [
     { field: "id", headerName: "Id" },
@@ -67,9 +72,18 @@ export default function BrandDataTable({ brands, setUpdate }) {
                       .delete(
                         `https://6a79ba5f674f43f4db11a88d.mockapi.io/category/${id}`,
                       )
-                      .then((response) => {
-                        console.log(response);
+                      .then(() => {
+                        // console.log(response);
+                          setBellarr((prev) => [
+                          ...prev,
+                          {
+                            id: Date.now(),
+                            type: "Delete Brand",
+                            message: `${name} Was deleted`,
+                          },
+                        ]);
                         setUpdate( u => u+1)
+
                       })
                       .catch((e) => {
                         console.error(e);

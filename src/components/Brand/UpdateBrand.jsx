@@ -1,9 +1,9 @@
-import { useParams } from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-
+import BellContext from "../BellContext";
 
 const validationSchema = Yup.object({
   name: Yup.string()
@@ -27,26 +27,31 @@ const validationSchema = Yup.object({
 const UpdateBrand = () => {
   const [msgerror, setmsgError] = useState("");
   const { id } = useParams();
-  const [data, setdata] = useState({})
+  const [data, setdata] = useState({});
 
+  const brands=useNavigate()
 
-    useEffect(() => {
-      axios.get(`https://6a79ba5f674f43f4db11a88d.mockapi.io/category/${id}`)
-      .then(res=>{
-        setdata(res.data)
-        
-        
-       
-        
-      })
-    }, [id])
+  const bellData = useContext(BellContext);
+  const { setBellarr } = bellData;
 
-//   const {name,description,logo}=data;
+  useEffect(() => {
+    axios
+      .get(`https://6a79ba5f674f43f4db11a88d.mockapi.io/category/${id}`)
+      .then((res) => {
+        setdata(res.data);
+      });
+  }, [id]);
+
+  //   const {name,description,logo}=data;
   return (
     <div className="w-full h-[90vh]">
       <Formik
-     enableReinitialize
-        initialValues={{ name:data.name , logo:data.logo , description:data.description  }}
+        enableReinitialize
+        initialValues={{
+          name: data.name,
+          logo: data.logo,
+          description: data.description,
+        }}
         validationSchema={validationSchema}
         onSubmit={(values, { setSubmitting, resetForm }) => {
           setTimeout(() => {
@@ -56,6 +61,15 @@ const UpdateBrand = () => {
                 values,
               )
               .then(() => {
+                setBellarr((prev) => [
+                  ...prev,
+                  {
+                    id: Date.now(),
+                    type: "Update Brand ",
+                    message: `${values.name} Was updated`,
+                  },
+                ]);
+                brands('/brands')
                 resetForm();
               })
               .catch(() => {

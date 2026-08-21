@@ -3,8 +3,8 @@ import Box from "@mui/material/Box";
 import AddIcon from "@mui/icons-material/Add";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/DeleteOutlined";
-import SaveIcon from "@mui/icons-material/Save";
-import CancelIcon from "@mui/icons-material/Close";
+// import SaveIcon from "@mui/icons-material/Save";
+// import CancelIcon from "@mui/icons-material/Close";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { DataGrid, GridActionsCellItem } from "@mui/x-data-grid";
 import { Link } from "react-router-dom";
@@ -58,7 +58,7 @@ export default function ModelDataTable({ model, setUpdate }) {
         return (
           <>
             <div>
-              <Link to={`/model/${id}`}>
+              <Link to={`/model/${categoryId}-${id}`}>
                 <GridActionsCellItem icon={VisibilityIcon} />
               </Link>
 

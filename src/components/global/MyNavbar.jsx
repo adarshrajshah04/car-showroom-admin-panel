@@ -65,7 +65,7 @@ export default function MyNavbar({ collapsed, setCollapsed }) {
 
               <PopoverPanel
                 transition
-                className="absolute left-1/2 z-10 mt-3 w-screen max-w-md -translate-x-1/2 overflow-hidden rounded-3xl bg-gray-800 outline-1 -outline-offset-1 outline-white/10 transition data-closed:translate-y-1 data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-150 data-leave:ease-in"
+                className="absolute left-1/2 z-10 mt-3 w-[calc(100vw-2rem)] max-w-md -translate-x-1/2 overflow-hidden rounded-3xl bg-gray-800 outline-1 -outline-offset-1 outline-white/10 transition data-closed:translate-y-1 data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-150 data-leave:ease-in"
               >
                 <div className="p-4">
                   {bellarr.map((item) => (
