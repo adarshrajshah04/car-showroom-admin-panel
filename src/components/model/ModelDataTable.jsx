@@ -90,7 +90,7 @@ export default function ModelDataTable({ model, setUpdate, brand }) {
                     color: "#FFFFFF",
                     "&:hover": {
                       color: "#FFFFFF",
-                      backgroundColor: "#0F3460",
+                      backgroundColor: "#E94560",
                     },
                   }}
                 />
@@ -104,7 +104,7 @@ export default function ModelDataTable({ model, setUpdate, brand }) {
                     color: "#FFFFFF",
                     "&:hover": {
                       color: "#FFFFFF",
-                      backgroundColor: "#0F3460",
+                      backgroundColor: "#E94560",
                     },
                   }}
                 />

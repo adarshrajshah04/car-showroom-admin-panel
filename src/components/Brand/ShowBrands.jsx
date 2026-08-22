@@ -27,8 +27,8 @@ export const ShowBrands = () => {
 
   return (
     <div className="w-full s-full" >
-      <h3 className="text-3xl font-medium text-[#E94560]">All-Brands</h3>
-      <p className="text-[#E94560]">View,Edit,Update Brands</p>
+      <h3 className="text-3xl font-medium text-white">All-Brands</h3>
+      <p className="text-white">View,Edit,Update Brands</p>
 
       <div className="w-full h-[80vh] mt-5">
         {loading ?<><p className="flex items-center justify-center text-white absolute top-[50%] left-[50%] ">Loading.....</p></>:<></>}

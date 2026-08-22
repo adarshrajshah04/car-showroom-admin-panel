@@ -114,7 +114,7 @@ const CreateModel = () => {
         }) => (
           <form onSubmit={handleSubmit}>
             {/* MOdel detail */}
-            <fieldset className="border p-4 border-green-400/50 mb-5">
+            <fieldset className="border p-4 border-[#E94560]/70 mb-5">
               <legend className="px-2 text-gray-400 text-xs">
                 Model Details
               </legend>
@@ -229,7 +229,7 @@ const CreateModel = () => {
 
             {/* category and Model sold count  */}
             <div className="flex justify-between mt-3">
-              <fieldset className="w-[28%] border p-2 border-green-400/50 mb-5">
+              <fieldset className="w-[28%] border p-2 border-[#E94560]/70 mb-5">
                 <legend className="px-2 text-gray-400 text-xs">category</legend>
 
                 <select
@@ -255,7 +255,7 @@ const CreateModel = () => {
                   {errors.category && touched.category && errors.category}
                 </p>
               </fieldset>
-              <fieldset className="flex w-[68%] justify-between border p-2 border-green-400/50 mb-5">
+              <fieldset className="flex w-[68%] justify-between border p-2 border-[#E94560]/70 mb-5">
                 <legend className="px-2 text-gray-400 text-xs">
                   Sales Information
                 </legend>
@@ -300,7 +300,7 @@ const CreateModel = () => {
             </div>
 
             {/* tag and rating  */}
-            <fieldset className="flex justify-between  border p-4 border-green-400/50 mb-5">
+            <fieldset className="flex justify-between  border p-4 border-[#E94560] mb-5">
               <legend className="px-2 text-gray-400 text-xs">
                 Additional Information
               </legend>
