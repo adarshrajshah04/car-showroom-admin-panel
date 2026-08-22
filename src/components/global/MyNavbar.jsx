@@ -30,11 +30,13 @@ import BellContext from "../BellContext";
 import { useContext } from "react";
 
 
+
 export default function MyNavbar({ collapsed, setCollapsed }) {
   const data=useContext(BellContext)
   const {bellarr} =data;
   return (
     <header className=" bg-white dark:bg-gray-900">
+    
       <nav
         aria-label="Global"
         className="flex items-center justify-between p-6 lg:px-8"
@@ -85,18 +87,7 @@ export default function MyNavbar({ collapsed, setCollapsed }) {
                   </div>
                 ))}
                 </div>
-                <div className="grid grid-cols-2 divide-x divide-white/10 bg-gray-700/50">
-                  {/* {callsToAction.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    className="flex items-center justify-center gap-x-2.5 p-3 text-sm/6 font-semibold text-white hover:bg-gray-700/50"
-                  >
-                    <item.icon aria-hidden="true" className="size-5 flex-none text-gray-500" />
-                    {item.name}
-                  </a>
-                ))} */}
-                </div>
+              
               </PopoverPanel>
             </Popover>
           </PopoverGroup>
@@ -104,7 +95,7 @@ export default function MyNavbar({ collapsed, setCollapsed }) {
             href="#"
             className="text-sm/6 font-semibold text-gray-900 dark:text-white"
           >
-            Log in <span aria-hidden="true">&rarr;</span>
+            Log out <span aria-hidden="true">&rarr;</span>
           </a>
         </div>
       </nav>

@@ -6,10 +6,14 @@ import { FaPlus } from "react-icons/fa";
 import { IoCarSport } from "react-icons/io5";
 import { ImHome } from "react-icons/im";
 import { Link } from "react-router-dom";
+import logo from '../../assets/images/logo.png'
 
 const MySidebar = ({ collapsed }) => {
   return (
     <Sidebar className="shrink-0"  collapsed={collapsed}>
+      <div className=" flex justify-center mt-5 mb-2">
+        <img src={logo} alt="" className="w-[50%]  " />
+      </div>
       <Menu>
         <MenuItem icon={<ImHome />} 
         component={<Link to={'/home'}/>}> Dashboard</MenuItem>
