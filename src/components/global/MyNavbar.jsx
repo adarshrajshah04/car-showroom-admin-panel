@@ -35,7 +35,7 @@ export default function MyNavbar({ collapsed, setCollapsed }) {
   const data=useContext(BellContext)
   const {bellarr} =data;
   return (
-    <header className=" bg-white dark:bg-gray-900">
+    <header className=" bg-white dark:bg-black">
     
       <nav
         aria-label="Global"

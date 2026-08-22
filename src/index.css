@@ -1,9 +1,41 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap');
 
 *{
     /* margin: 0; */
     /* padding: 0; */
     /* box-sizing: border-box; */
+    font-family: "Roboto Slab", serif;
 }
 
 @import "tailwindcss";
+
+
+
+
+/* Sidebar css */
+
+.ps-sidebar-container {
+  background-color:#1A1A2E !important;
+}
+
+.ps-menu-button {
+  color: white !important;
+  
+  margin-top: 10px;
+  font-weight: 700;
+}
+
+.ps-menu-icon {
+  color: white !important;
+}
+
+.ps-menu-button:hover {
+  background-color:  #16213E !important;
+}
+.ps-menu-button:hover .ps-menu-icon {
+  color:   #E94560 !important;
+}
+
+.ps-submenu-content {
+  background-color: #16213E !important;
+}

@@ -8,6 +8,7 @@ const ShowModel = () => {
   //  console.log(categoryId);
 
   const [model, setModel] = useState([]);
+  const [brand, setbrand] = useState([]);
   const [update, setUpdate] = useState(1);
   useEffect(() => {
     async function fun1() {
@@ -16,7 +17,8 @@ const ShowModel = () => {
           "https://6a79ba5f674f43f4db11a88d.mockapi.io/category",
         );
         const categories = catRes.data.map((d) => d.id);
-        console.log(categories);
+        setbrand(catRes.data)
+        // console.log(categories);
 
         let products = [];
         for (var cat of categories) {
@@ -53,7 +55,7 @@ const ShowModel = () => {
       <p className="text-white font-medium">View , Update and Delete Models </p>
 
       <div>
-        <ModelDataTable model={model} setUpdate={setUpdate} />
+        <ModelDataTable model={model} setUpdate={setUpdate} brand={brand} />
       </div>
     </div>
   );

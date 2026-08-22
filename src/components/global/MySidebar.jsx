@@ -8,6 +8,7 @@ import { ImHome } from "react-icons/im";
 import { Link } from "react-router-dom";
 import logo from '../../assets/images/logo.png'
 
+
 const MySidebar = ({ collapsed }) => {
   return (
     <Sidebar className="shrink-0"  collapsed={collapsed}>
