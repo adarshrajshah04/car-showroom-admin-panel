@@ -24,7 +24,8 @@ const validationSchema = Yup.object({
 const CreateBrands = () => {
   const [msgerror, setmsgError] = useState("");
   return (
-    <div className="w-full h-[80vh] bg-gray-700">
+    <div className="w-full h-[80vh] bg-black">
+      <h3 className=" inline-block text-4xl font-bold text-white  mb-3 hover:text-[#E94560]">Add Brands</h3>
       <Formik
         initialValues={{ name: "", logo: "",description:"" }}
         validationSchema={validationSchema}

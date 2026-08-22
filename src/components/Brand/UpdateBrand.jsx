@@ -45,6 +45,8 @@ const UpdateBrand = () => {
   //   const {name,description,logo}=data;
   return (
     <div className="w-full h-[90vh]">
+      <h3 className="inline-block text-4xl font-bold text-white  mb-3 hover:text-[#E94560]">Update Brands</h3>
+
       <Formik
         enableReinitialize
         initialValues={{

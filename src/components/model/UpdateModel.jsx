@@ -85,6 +85,8 @@ const UpdateModel = () => {
   //   const {name,description,logo}=data;
   return (
     <div className="w-full h-[90vh]">
+      <h3 className=" inline-block text-4xl font-bold text-white  mb-3 hover:text-[#E94560]">Update Model</h3>
+
       <Formik
         enableReinitialize
         initialValues={{
@@ -113,7 +115,7 @@ const UpdateModel = () => {
               )
               .then(() => {
                 resetForm();
-                alert("Model Update successfully");
+                // alert("Model Update successfully");
                 modeltable("/model");
                 setBellarr((prev) => [
                   ...prev,
