@@ -21,6 +21,10 @@ const NewCarDataShow = () => {
   return (
     <div>
       <div>
+      <h3 className="text-white text-3xl italic font-black ">  New collection</h3>
+      <p className="text-white">Add, delete, update collection</p>
+      </div>
+      <div className=" mt-10">
         <NewCarDataTable setUpdate={setUpdate} cardata={cardata} />
       </div>
     </div>

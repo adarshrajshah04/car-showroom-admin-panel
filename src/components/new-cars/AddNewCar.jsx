@@ -30,7 +30,7 @@ const AddNewCar = () => {
   const [msgerror, setmsgError] = useState("");
   return (
     <div className="w-full h-[80vh] bg-black">
-      <h3 className=" inline-block text-4xl font-bold text-white  mb-3 hover:text-[#E94560]">Add Brands</h3>
+      <h3 className=" inline-block text-4xl font-bold text-white  mb-3 hover:text-[#E94560]">Add new collection</h3>
       <Formik
         initialValues={{ name: "", price:'',image: "",description:"" }}
         validationSchema={validationSchema}

@@ -5,8 +5,10 @@ import { BiSolidCategory } from "react-icons/bi";
 import { FaPlus } from "react-icons/fa";
 import { IoCarSport } from "react-icons/io5";
 import { ImHome } from "react-icons/im";
+import { RiRoadsterLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import logo from '../../assets/images/logo.png'
+
 
 
 const MySidebar = ({ collapsed }) => {
@@ -18,6 +20,13 @@ const MySidebar = ({ collapsed }) => {
       <Menu>
         <MenuItem icon={<ImHome />} 
         component={<Link to={'/home'}/>}> Dashboard</MenuItem>
+
+         <SubMenu label="New-Collection" icon={<RiRoadsterLine/>}>
+          <MenuItem icon={<BiSolidCategory />}
+          component={<Link to={'/new-cars'}/>}>All New-Cars</MenuItem>
+          <MenuItem icon={<FaPlus />}
+          component={<Link to={'/new-cars-add'} />}> Add-Cars</MenuItem>
+        </SubMenu>
 
         <SubMenu label="Brands" icon={<FaTags />}>
           
@@ -36,12 +45,7 @@ const MySidebar = ({ collapsed }) => {
           component={<Link to={'/create-model'} />}> Add-Cars</MenuItem>
         </SubMenu>
 
-        <SubMenu label="New-Cars" icon={<IoCarSport />}>
-          <MenuItem icon={<BiSolidCategory />}
-          component={<Link to={'/new-cars'}/>}>All New-Cars</MenuItem>
-          <MenuItem icon={<FaPlus />}
-          component={<Link to={'/new-cars-add'} />}> Add-Cars</MenuItem>
-        </SubMenu>
+       
       </Menu>
     </Sidebar>
   );
