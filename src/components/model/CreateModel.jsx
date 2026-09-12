@@ -31,7 +31,7 @@ const validationSchema = Yup.object({
     .required("Discount percentage is required")
     .min(0, "Discount cannot be less than 0%")
     .max(50, "Discount cannot exceed 100%"),
-  category: Yup.string().trim().required("Category is required"),
+  categoryID: Yup.string().trim().required("Category is required"),
   quantitySold: Yup.number()
     .typeError("Quantity sold must be a number")
     .required("Quantity sold is required")

@@ -3,7 +3,7 @@ import * as Yup from "yup";
 import { Formik } from "formik";
 import axios from "axios";
 import {useNavigate} from 'react-router-dom'
-
+import logo from '../assets/images/logo.png'
 const validationSchema = Yup.object({
   username: Yup.string()
     .trim()
@@ -22,8 +22,12 @@ export default function Login() {
   let home=useNavigate()
   return (
     <>
-      <div className=" bg-gray-700 h-screen flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+      <div className=" bg-black h-screen flex min-h-full flex-col items-center px-6 py-12 lg:px-8">
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+
+          <div className=" flex justify-center" >
+            <img className="w-[80%]  " src={logo} alt="" />
+          </div>
           <Formik
             initialValues={{ username: "", password: "" }}
             validationSchema={validationSchema}
@@ -55,7 +59,7 @@ export default function Login() {
               handleSubmit,
               isSubmitting,
             }) => (
-              <form onSubmit={handleSubmit} className="bg-gray-700  space-y-6">
+              <form onSubmit={handleSubmit} className="bg-[#1A1A2E]/50  px-12 py-6 rounded-2xl mt-5 space-y-6">
                 <div>
                   <label
                     htmlFor="user"
@@ -115,7 +119,7 @@ export default function Login() {
                 <div>
                   <button
                     type="submit"
-                    className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:bg-indigo-500 dark:shadow-none dark:hover:bg-indigo-400 dark:focus-visible:outline-indigo-500"
+                    className="flex w-full justify-center rounded-md bg-[] px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:bg-indigo-500 dark:shadow-none dark:hover:bg-indigo-400 dark:focus-visible:outline-indigo-500"
                     disabled={isSubmitting}
                   >
                     Sign in

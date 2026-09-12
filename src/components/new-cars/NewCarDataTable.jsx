@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import BellContext from "../BellContext";
 
-export default function BrandDataTable({ brands, setUpdate }) {
+export default function NewCarDataTable({ cardata, setUpdate }) {
   // const navigate = useNavigate()
 
   const data = useContext(BellContext);
@@ -24,13 +24,13 @@ export default function BrandDataTable({ brands, setUpdate }) {
       headerName: "Image",
       type: "longText",
       width: 200,
-      renderCell: ({ row: { logo } }) => {
+      renderCell: ({ row: { image } }) => {
         // console.log(logo)
 
         return (
           <div className="w-12 h-12 flex items-center justify-center object-center ">
             <img
-              src={logo}
+              src={image}
               width={50}
               height={50}
               className="w-full h-full rounded-full object-cover"
@@ -96,12 +96,12 @@ export default function BrandDataTable({ brands, setUpdate }) {
                 }}
                 onClick={() => {
                   let confirmation = window.confirm(
-                    `Do you want to delete ${name} brand?`,
+                    `Do you want to delete ${name} new car?`,
                   );
                   if (confirmation) {
                     axios
                       .delete(
-                        `https://6a79ba5f674f43f4db11a88d.mockapi.io/category/${id}`,
+                        `https://6a74210e15e0453fe1b4664a.mockapi.io/Car/${id}`,
                       )
                       .then(() => {
                         // console.log(response);
@@ -328,7 +328,7 @@ export default function BrandDataTable({ brands, setUpdate }) {
         },
       }}
     >
-      <DataGrid rows={brands} columns={columns} showToolbar />
+      <DataGrid rows={cardata} columns={columns} showToolbar />
     </Box>
   );
 }

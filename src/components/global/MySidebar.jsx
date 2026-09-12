@@ -35,6 +35,13 @@ const MySidebar = ({ collapsed }) => {
           <MenuItem icon={<FaPlus />}
           component={<Link to={'/create-model'} />}> Add-Cars</MenuItem>
         </SubMenu>
+
+        <SubMenu label="New-Cars" icon={<IoCarSport />}>
+          <MenuItem icon={<BiSolidCategory />}
+          component={<Link to={'/new-cars'}/>}>All New-Cars</MenuItem>
+          <MenuItem icon={<FaPlus />}
+          component={<Link to={'/new-cars-add'} />}> Add-Cars</MenuItem>
+        </SubMenu>
       </Menu>
     </Sidebar>
   );

@@ -21,7 +21,7 @@ import { useContext } from "react";
 import BellContext from "../BellContext";
 
 export default function ModelDataTable({ model, setUpdate, brand }) {
-  console.log(brand);
+  // console.log(brand);
 
   const data = useContext(BellContext);
   const { setBellarr } = data;
@@ -122,7 +122,7 @@ export default function ModelDataTable({ model, setUpdate, brand }) {
                 icon={DeleteIcon}
                 onClick={() => {
                   let confirmation = window.confirm(
-                    `Do you want to delete ${title} category?`,
+                    `Do you want to delete ${title} car?`,
                   );
                   if (confirmation) {
                     axios

@@ -14,6 +14,8 @@ import NotFound from "./components/NotFound";
 import Login from "./components/Login";
 import { Private } from "./components/Private";
 import BellContext from "./components/BellContext";
+import NewCarDataShow from "./components/new-cars/NewCarDataShow";
+import AddNewCar from "./components/new-cars/AddNewCar";
 
 
 const App = () => {
@@ -39,6 +41,8 @@ const App = () => {
               <Route path="/create-brand" element={<CreateBrands />} />
               <Route path="/create-model" element={<CreateModel />} />
               <Route path="/model" element={<ShowModel />} />
+              <Route path="/new-cars" element={<NewCarDataShow />} />
+              <Route path="/new-cars-add" element={<AddNewCar />} />
               {/* Dynamic routing */}
               {/* brands */}
               <Route path="/brands/:id" element={<SingleBrand />} />
@@ -46,6 +50,9 @@ const App = () => {
               {/* models */}
               <Route path="/model/:id" element={<SingleModel />} />
               <Route path="/model/update/:id" element={<UpdateModel />} />
+              {/* New-Car */}
+              
+
             </Route>
           </Route>
           <Route path="/login" element={<Login />} />
