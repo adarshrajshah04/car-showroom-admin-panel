@@ -12,10 +12,15 @@ const validationSchema = Yup.object({
     .min(2, "Brand name must be at least 2 characters")
     .max(50, "Brand name must not exceed 50 characters"),
 
-  logo: Yup.string()
+  image: Yup.string()
     .trim()
     .required("Logo URL is required")
     .url("Please enter a valid logo URL"),
+
+  price: Yup.number()
+    .typeError("Price must be a number")
+    .required("Price is required")
+    .positive("Price must be greater than 0"),
 
   description: Yup.string()
     .trim()
@@ -24,19 +29,19 @@ const validationSchema = Yup.object({
     .max(300, "Description must not exceed 300 characters"),
 });
 
-const UpdateBrand = () => {
+const UpdateNewCar = () => {
   const [msgerror, setmsgError] = useState("");
   const { id } = useParams();
   const [data, setdata] = useState({});
 
-  const brands = useNavigate();
+  const cars = useNavigate();
 
   const bellData = useContext(BellContext);
   const { setBellarr } = bellData;
 
   useEffect(() => {
     axios
-      .get(`https://6a79ba5f674f43f4db11a88d.mockapi.io/category/${id}`)
+      .get(`https://6a74210e15e0453fe1b4664a.mockapi.io/Car/${id}`)
       .then((res) => {
         setdata(res.data);
       });
@@ -46,14 +51,15 @@ const UpdateBrand = () => {
   return (
     <div className="w-full h-[90vh]">
       <h3 className="inline-block text-4xl font-bold text-white  mb-3 hover:text-[#E94560]">
-        Update Brands
+        Update Car
       </h3>
 
       <Formik
         enableReinitialize
         initialValues={{
           name: data.name,
-          logo: data.logo,
+          image: data.image,
+          price: data.price,
           description: data.description,
         }}
         validationSchema={validationSchema}
@@ -61,7 +67,7 @@ const UpdateBrand = () => {
           setTimeout(() => {
             axios
               .put(
-                `https://6a79ba5f674f43f4db11a88d.mockapi.io/category/${id}`,
+                `https://6a74210e15e0453fe1b4664a.mockapi.io/Car/${id}`,
                 values,
               )
               .then(() => {
@@ -73,7 +79,7 @@ const UpdateBrand = () => {
                     message: `${values.name} Was updated`,
                   },
                 ]);
-                brands("/brands");
+                cars("/new-cars");
                 resetForm();
               })
               .catch(() => {
@@ -96,8 +102,9 @@ const UpdateBrand = () => {
           /* and other goodies */
         }) => (
           <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <div>
+            {/* name and url */}
+            <div className="flex justify-between">
+              <div className="w-[48%]">
                 <label
                   htmlFor="name"
                   className="block text-sm/6 font-medium text-gray-900 dark:text-gray-100"
@@ -121,31 +128,57 @@ const UpdateBrand = () => {
                   </p>
                 </div>
               </div>
-            </div>
 
-            <div className="flex justify-between">
               <div className="w-[48%]">
                 <div className="flex items-center justify-between">
                   <label
-                    htmlFor="logo"
+                    htmlFor="image"
                     className="block text-sm/6 font-medium text-gray-900 dark:text-gray-100"
                   >
-                    Logo URL
+                    Image URL
                   </label>
                 </div>
                 <div className="mt-2">
                   <input
-                    id="logo"
-                    name="logo"
+                    id="image"
+                    name="image"
                     type="url"
                     placeholder="URL"
                     className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 dark:bg-white/5 dark:text-white dark:outline-white/10 dark:placeholder:text-gray-500 dark:focus:outline-indigo-500"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.logo}
+                    value={values.image}
                   />
                   <p className="text-sm text-red-600 font-bold">
-                    {errors.logo && touched.logo && errors.logo}
+                    {errors.image && touched.image && errors.image}
+                  </p>
+                </div>
+              </div>
+            </div>
+            {/* price and description */}
+            <div className="flex justify-between">
+              <div className="w-[48%]">
+                <div className="flex items-center justify-between">
+                  <label
+                    htmlFor="price"
+                    className="block text-sm/6 font-medium text-gray-900 dark:text-gray-100"
+                  >
+                    Price
+                  </label>
+                </div>
+                <div className="mt-2">
+                  <input
+                    id="price"
+                    name="price"
+                    type="text"
+                    placeholder="price"
+                    className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 dark:bg-white/5 dark:text-white dark:outline-white/10 dark:placeholder:text-gray-500 dark:focus:outline-indigo-500"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.price}
+                  />
+                  <p className="text-sm text-red-600 font-bold">
+                    {errors.price && touched.price && errors.price}
                   </p>
                 </div>
               </div>
@@ -184,7 +217,7 @@ const UpdateBrand = () => {
                 disabled={isSubmitting}
                 className="block   justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-md/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:bg-indigo-500 dark:shadow-none dark:hover:bg-indigo-400 dark:focus-visible:outline-indigo-500"
               >
-                Update
+                Submit
               </button>
             </div>
 
@@ -200,4 +233,4 @@ const UpdateBrand = () => {
   );
 };
 
-export default UpdateBrand;
+export default UpdateNewCar;

@@ -16,6 +16,8 @@ import { Private } from "./components/Private";
 import BellContext from "./components/BellContext";
 import NewCarDataShow from "./components/new-cars/NewCarDataShow";
 import AddNewCar from "./components/new-cars/AddNewCar";
+import SingleNewCar from "./components/new-cars/SingleNewCar";
+import UpdateNewCar from "./components/new-cars/UpdateNewCar";
 
 
 const App = () => {
@@ -51,6 +53,10 @@ const App = () => {
               <Route path="/model/:id" element={<SingleModel />} />
               <Route path="/model/update/:id" element={<UpdateModel />} />
               {/* New-Car */}
+              <Route path="/new-cars/:id" element={<SingleNewCar />} />
+              <Route path="/new-cars/update/:id" element={<UpdateNewCar />} />
+
+
               
 
             </Route>

@@ -56,7 +56,7 @@ export default function NewCarDataTable({ cardata, setUpdate }) {
         return (
           <>
             <div>
-              <Link to={`/brands/${id}`}>
+              <Link to={`/new-cars/${id}`}>
                 <GridActionsCellItem
                   icon={VisibilityIcon}
                   label="View"
@@ -70,7 +70,7 @@ export default function NewCarDataTable({ cardata, setUpdate }) {
                 />
               </Link>
 
-              <Link to={`/brands/update/${id}`}>
+              <Link to={`/new-cars/update/${id}`}>
                 <GridActionsCellItem
                   icon={EditIcon}
                   label="Edit"
